@@ -5,7 +5,7 @@ public class bookingKel7 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String[] menu = { "", "Popcorn", "Churros", "Kentang Goreng", "Orange Juice", "Jasmine Tea", "Mineral Water", "Lemon Tea" };
+        String[] menu = { "", "Popcorn", "Churros", "Kentang Goreng", "Orange Juice", "Jasmine Tea", "Mineral Water", "Lemon Tea", "Coca-cola" };
         String lagi = "", movie;
         int counter = 0, numMenu = 0, hargaTiket = 30000, bioskop;
         int[] hargaMenu = { 0, 20000, 15000, 14000, 13000, 10000, 5000, 12000 };
