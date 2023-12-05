@@ -16,6 +16,7 @@ public class project_bioskop7{
         String[] dataBioskop = new String[3];
         int i = 0;
         int Pilihhari = 0;
+        int a;
 
         System.out.println("===============================");
         System.out.println("SELAMAT DATANG DI BIOSKOP KAMI!");
