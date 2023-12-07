@@ -2,6 +2,13 @@ import java.util.Scanner;
 
 public class project_bioskop7{
 
+    private static double hitungDiskon (double poinMembership) {
+        if (poinMembership < 85000) {
+            return poinMembership;
+        }else{ 
+        return poinMembership - (poinMembership*0.2);
+    }
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -101,7 +108,7 @@ public class project_bioskop7{
 
             boolean movieFound = false;
             int filmID = 0;
-            
+
             for (i = 0; i < dataFilmBioskop.length; i++) {
                 if (movie.equalsIgnoreCase(dataFilmBioskop[i][0])) {
                     movieFound = true;
@@ -156,7 +163,7 @@ public class project_bioskop7{
             System.out.print("Masukkan jumlah tiket yang diinginkan : ");
             int numTickets = sc.nextInt();
 
-            totalHarga += (hargaTiket * numTickets);
+            //totalHarga += (hargaTiket * numTickets);
 
             // display
             // int[] displaySeat = new int[numTickets];
@@ -299,6 +306,16 @@ public class project_bioskop7{
                 System.out.println();
             }
 
+            //poin member
+            System.out.print("Masukkan total pembelian tiket: ");
+            int hasil = numTickets * hargaTiket;
+            //double diskon = hasil * 0.1;
+
+            totalHarga += hasil;
+            double poinMembership = hitungDiskon(totalHarga);
+            //System.out.println("harga tiket : " + " Rp. " + hargaTiket);
+            
+
             // total keseluruhan
             System.out.println();
             System.out.println("=======================================");
@@ -314,6 +331,8 @@ public class project_bioskop7{
                     System.out.println("||Tgl Tayang    : " + dataFilmBioskop[filmID][4]+ "  ||");
                     System.out.println("||Jam Tayang    : " + dataFilmBioskop[filmID][5]+ "  ||");
                     System.out.println("||Harga satuan  : " + dataFilmBioskop[i][3] + "         ||");
+                    //System.out.println("diskon yang didapatkan : " + diskon);
+                    System.out.println("||Sebelum diskon : " + "Rp. " + totalHarga);
                     System.out.println("----------------------------------------");
                     break;
                 }
@@ -336,7 +355,7 @@ public class project_bioskop7{
             }
 
             System.out.println("=========================================");
-            System.out.println("||Total harga : Rp " + totalHarga);
+            System.out.println("||Total harga : Rp " + poinMembership );
             System.out.println("===Terima kasih telah memesan di Bioskop kami!===");
 
         }
