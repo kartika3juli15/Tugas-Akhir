@@ -14,6 +14,7 @@ public class anyar2 {
         String[][] dataFilmBioskop = new String[5][4];
         String[][] dataBioskop = new String[1][3];
         int i = 0;
+        int angka;
 
         System.out.println("===============================");
         System.out.println("SELAMAT DATANG DI BIOSKOP KAMI!");
