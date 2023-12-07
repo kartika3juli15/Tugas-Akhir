@@ -10,13 +10,11 @@ public class project_bioskop7{
         String lagi = "", movie = "";
         int counter = 0, numMenu = 0, hargaTiket = 30000, bioskop = 0;
         int[] hargaMenu = { 0, 20000, 15000, 14000, 13000, 10000, 5000, 12000, 15000 };
-        int[] kode = { 0, 1, 2 };
+        int[] kode = { 0, 1, 2, 3};
         double totalHarga = 0.0;
-        String[][] dataFilmBioskop = new String[5][4];
-        String[] dataBioskop = new String[3];
+        String[][] dataFilmBioskop = new String[5][6];
+        String[] dataBioskop = new String[4];
         int i = 0;
-        int Pilihhari = 0;
-        int a;
 
         System.out.println("===============================");
         System.out.println("SELAMAT DATANG DI BIOSKOP KAMI!");
@@ -33,45 +31,53 @@ public class project_bioskop7{
             System.out.println("--------------------------");
 
             // bioskop pilihan
-            dataBioskop[0] = "1. CGV";
-            dataBioskop[1] = "2. XXI";
-            dataBioskop[2] = "3. Movimax";
+            dataBioskop[0] = " ";
+            dataBioskop[1] = "CGV";
+            dataBioskop[2] = "XXI";
+            dataBioskop[3] = "Movimax";
 
             // Menambahkan data film dan studio
             dataFilmBioskop[0][0] = "Yowis ben";
             dataFilmBioskop[0][1] = "studio 1";
-            // dataFilmBioskop[0][2] = "13.00, 15.30, 18.00";
             dataFilmBioskop[0][3] = "Rp.30.000,00";
+            dataFilmBioskop[0][4] = "Senin, 1 Oktober 2023";
+            dataFilmBioskop[0][5] = "13.00";
 
             dataFilmBioskop[1][0] = "Joker";
             dataFilmBioskop[1][1] = "studio 4";
-            // dataFilmBioskop[1][2] = "14.00, 16.30, 19.00";
             dataFilmBioskop[1][3] = "Rp.30.000,00";
+            dataFilmBioskop[1][4] = "Kamis, 4 Oktober 2023";
+            dataFilmBioskop[1][5] = "15.00";
 
             dataFilmBioskop[2][0] = "Pamali";
             dataFilmBioskop[2][1] = "studio 3";
-            // dataFilmBioskop[2][2] = "13.30, 16.00, 18.30";
             dataFilmBioskop[2][3] = "Rp.30.000,00";
+            dataFilmBioskop[2][4] = "selasa, 2 oktober 2023";
+            dataFilmBioskop[2][5] = "12.00";
 
             dataFilmBioskop[3][0] = "Inception";
             dataFilmBioskop[3][1] = "studio 5";
-            // dataFilmBioskop[3][2] = "14.00, 16.00, 18.00";
             dataFilmBioskop[3][3] = "Rp.30.000,00";
+            dataFilmBioskop[3][5] = "Rabu, 3 oktober 2023";
+            dataFilmBioskop[3][5] = "17.00";
 
             dataFilmBioskop[4][0] = "Barbie";
             dataFilmBioskop[4][1] = "studio 2";
-            // dataFilmBioskop[4][2] = "14.30, 16.30, 18.30";
             dataFilmBioskop[4][3] = "Rp.30.000,00";
+            dataFilmBioskop[4][4] = "jumat, 5 oktober 2023";
+            dataFilmBioskop[4][5] = "19.00";
+
 
             // pilih bioskop
             System.out.println("---------Daftar Bioskop---------");
-            for (i = 0; i < dataBioskop.length; i++) {
-                System.out.println(dataBioskop[i]);
+            for (i = 1; i < dataBioskop.length; i++) {
+                System.out.println(i + ". " + dataBioskop[i]);
             }
             System.out.println("-------------------------------------");
             System.out.print("silahkan pilih bioskop yang tersedia : ");
             bioskop = sc.nextInt();
             sc.nextLine();
+            System.out.println("pilih " + dataBioskop[bioskop]);
             System.out.println("-------------------------------------");
             if (bioskop == 1) {
                 System.out.println("film yang tersedia : ");
@@ -95,7 +101,7 @@ public class project_bioskop7{
 
             boolean movieFound = false;
             int filmID = 0;
-
+            
             for (i = 0; i < dataFilmBioskop.length; i++) {
                 if (movie.equalsIgnoreCase(dataFilmBioskop[i][0])) {
                     movieFound = true;
@@ -133,114 +139,15 @@ public class project_bioskop7{
                 }
 
             }
-
-            switch (movie) {
-                case "yowis ben", "Yowis Ben":
-                    System.out.println("====Hari dan Tanggal yang tersedia====");
-                    String[] yowisBen = { "", "senin, 1 oktober 2023", "kamis, 4 oktober 2023" };
-                    System.out.println("--silahkan pilih hari--");
-                    for (int k = 1; k < yowisBen.length; k++) {
-                        System.out.println((k) + ". " + yowisBen[k]);
-                    }
-                    System.out.print("pilih : ");
-                    Pilihhari = sc.nextInt();
-                    sc.nextLine();
-                    for (int k = 0; k < kode.length; k++) {
-                        if (Pilihhari == kode[k]) {
-                            if (k == 1 || k == 2) {
-                                System.out.println("hari Tersedia " + yowisBen[k]);
-
-                            }
-                        }
-                    }
-                    break;
-
-                case "Pamali", "pamali":
-                    System.out.println("====Hari dan Tanggal yang tersedia====");
-                    String[] pamali = { "", "selasa, 2 oktober 2023", "jumat, 5 oktober 2023" };
-                    System.out.println("--silahkan pilih hari--");
-                    for (int k = 1; k < pamali.length; k++) {
-                        System.out.println((k) + ". " + pamali[k]);
-                    }
-                    System.out.print("pilih : ");
-                    Pilihhari = sc.nextInt();
-                    sc.nextLine();
-                    for (int k = 0; k < kode.length; k++) {
-                        if (Pilihhari == kode[k]) {
-                            if (k == 1 || k == 2) {
-                                System.out.println("hari Tersedia " + pamali[k]);
-
-                            }
-                        }
-                    }
-                    break;
-
-                case "barbie", "Barbie":
-                    System.out.println("====Hari dan Tanggal yang tersedia====");
-                    String[] barbie = { "", "senin, 1 oktober 2023", "selasa, 2 oktober 2023" };
-                    System.out.println("--silahkan pilih hari--");
-                    for (int k = 1; k < barbie.length; k++) {
-                        System.out.println((k) + ". " + barbie[k]);
-                    }
-                    System.out.print("pilih : ");
-                    Pilihhari = sc.nextInt();
-                    sc.nextLine();
-                    for (int k = 0; k < kode.length; k++) {
-                        if (Pilihhari == kode[k]) {
-                            if (k == 1 || k == 2) {
-                                System.out.println("hari Tersedia " + barbie[k]);
-
-                            }
-                        }
-                    }
-                    break;
-
-                case "Inception", "inception":
-                    System.out.println("====Hari dan Tanggal yang tersedia====");
-                    String[] inception = { "", "rabu, 1 oktober 2023", "sabtu, 6 oktober 2023" };
-                    System.out.println("--silahkan pilih hari--");
-                    for (int k = 1; k < inception.length; k++) {
-                        System.out.println((k) + ". " + inception[k]);
-                    }
-                    System.out.print("pilih : ");
-                    Pilihhari = sc.nextInt();
-                    sc.nextLine();
-                    for (int k = 0; k < kode.length; k++) {
-                        if (Pilihhari == kode[k]) {
-                            if (k == 1 || k == 2) {
-                                System.out.println("hari Tersedia " + inception[k]);
-
-                            }
-                        }
-                    }
-                    break;
-
-                case "Joker", "joker":
-                    System.out.println("====Hari dan Tanggal yang tersedia====");
-                    String[] joker = { "", "rabu, 3 oktober 2023", "minggu, 7 oktober 2023" };
-                    System.out.println("--silahkan pilih hari--");
-                    for (int k = 1; k < joker.length; k++) {
-                        System.out.println((k) + ". " + joker[k]);
-                    }
-                    System.out.print("pilih : ");
-                    Pilihhari = sc.nextInt();
-                    sc.nextLine();
-                    for (int k = 0; k < kode.length; k++) {
-                        if (Pilihhari == kode[k]) {
-                            if (k == 1 || k == 2) {
-                                System.out.println("hari Tersedia " + joker[k]);
-
-                            }
-                        }
-                    }
-                    break;
-            }
+                    
 
             boolean filmTersedia = false;
 
             System.out.println("---------Film Tersedia!---------");
             System.out.println("Film        : " + dataFilmBioskop[filmID][0]);
             System.out.println("studio      : " + dataFilmBioskop[filmID][1]);
+            System.out.println("Tanggal     : " + dataFilmBioskop[filmID][4]);
+            System.out.println("jam         : " + dataFilmBioskop[filmID][5]);
             System.out.println("Harga       : " + dataFilmBioskop[filmID][3]);
             System.out.println("---------------------------------");
 
@@ -397,15 +304,16 @@ public class project_bioskop7{
             System.out.println("=======================================");
             System.out.println("||           STRUK BIOSKOP           ||");
             System.out.println("=======================================");
-            System.out.println("||NAMA FILM     : " + dataFilmBioskop[filmID][0] + "                 ||");
+            System.out.println("||NAMA FILM     : " + dataFilmBioskop[filmID][0] + "||");
+            System.out.println("||LOKASI        : " + dataBioskop[bioskop] +            "||");
             System.out.println("---------------------------------------");
             for (i = 0; i < dataFilmBioskop.length; i++) {
                 if (movie.equalsIgnoreCase(dataFilmBioskop[i][0])) {
                     System.out.println("||jumlah tiket  : " + numTickets + "                    ||");
                     System.out.println("||studio        : " + dataFilmBioskop[i][1] + "             ||");
-                    System.out.println("||Jam Tayang    : " + dataFilmBioskop[i][2] + "  ||");
-                    System.out.println("||Harga         : " + dataFilmBioskop[i][3] + "         ||");
-                    filmTersedia = true;
+                    System.out.println("||Tgl Tayang    : " + dataFilmBioskop[filmID][4]+ "  ||");
+                    System.out.println("||Jam Tayang    : " + dataFilmBioskop[filmID][5]+ "  ||");
+                    System.out.println("||Harga satuan  : " + dataFilmBioskop[i][3] + "         ||");
                     System.out.println("----------------------------------------");
                     break;
                 }
@@ -434,3 +342,4 @@ public class project_bioskop7{
         }
     }
 }
+
