@@ -6,11 +6,141 @@ public class project_bioskop7{
         if (poinMembership < 85000) {
             return poinMembership;
         }else{ 
-        return poinMembership - (poinMembership*0.2);
+        return poinMembership - (poinMembership*0.1);
     }
 }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        int noUser = 0;
+        String[][] userKrywn = new String [4][2];
+        String [][] userPelanggan = new String [5][2];
+
+        //karyawan
+        userKrywn[0][0] = "Bayu";
+        userKrywn[0][1] = "B7073";
+
+        userKrywn[1][0] = "Devita";
+        userKrywn[1][1] = "D7002";
+
+        userKrywn[2][0] = "Kartika";
+        userKrywn[2][1] = "K7116";
+
+        userKrywn[3][0] = "Syaqira"; 
+        userKrywn[3][1] = "S7123";
+        
+        //user
+        userPelanggan[0][0] = "Syaqira";
+        userPelanggan[0][1] = "Syaqira123";
+
+        userPelanggan[1][0] = "Devita";
+        userPelanggan[1][1] = "Devita1234";
+
+        //pemilihan multi pengguna
+        System.out.println("Pilih jenis pengguna: ");
+        System.out.println("1. Karyawan");
+        System.out.println("2. Pelanggan");
+        System.out.print("Masukkan pilihan: ");
+        int pilih = sc.nextInt();
+        sc.nextLine();
+        
+        boolean IDfound = false;
+        
+        //laman login admin
+        switch (pilih){
+        case 1 :
+            System.out.println("------- LOGIN --------");
+            System.out.print("Masukkan Nama Anda: ");
+            String username = sc.nextLine();
+            System.out.print("Masukkan Nomor ID Anda: ");
+            String password = sc.nextLine();
+            for(int i = 0; i < userKrywn.length; i++ ){ 
+                if (username.equals(userKrywn[i][0]) && password.equals(userKrywn[i][1])){
+                    IDfound = true;
+                    noUser = i;
+                    break;
+                }
+            }
+            if (IDfound){ 
+                    System.out.println("LOGIN BERHASIL >>");
+                    System.out.println("Selamat datang " + userKrywn[noUser][0] + "!");
+                    sc.nextLine();
+                    
+                } else {
+                    System.out.println("MAAF LOGIN GAGAL. SILAHKAN COBA LAGI");
+                }
+
+            while(!IDfound){ 
+            System.out.println("------- LOGIN --------");
+            System.out.print("Masukkan Nama Anda: ");
+            username = sc.nextLine();
+            System.out.print("Masukkan Nomor ID Anda: ");
+            password = sc.nextLine();
+            for(int i = 0; i < userKrywn.length; i++ ){ 
+                if (username.equals(userKrywn[i][0]) && password.equals(userKrywn[i][1])){
+                    IDfound = true;
+                    noUser = i;
+                    break;
+                }
+            }
+                if (IDfound){
+                    System.out.println("LOGIN BERHASIL >>");
+                    System.out.println("Selamat datang " + userKrywn[noUser][0] + "!");
+                    sc.nextLine();
+                    IDfound = true;
+                    break;
+                } else {
+                    System.out.println("MAAF LOGIN GAGAL. SILAHKAN COBA LAGI");
+                }
+            }
+
+        //laman login user
+        case 2 :
+            System.out.println("------- LOGIN --------");
+            System.out.print("Masukkan Username : ");
+            username = sc.nextLine();
+            System.out.print("Masukkan Password : ");
+            password = sc.nextLine();
+            for(int i = 0; i < userPelanggan.length; i++ ){ 
+                if (username.equals(userPelanggan[i][0]) && password.equals(userPelanggan[i][1])){
+                    IDfound = true;
+                    noUser = i;
+                    break;
+                }
+            }
+            if (IDfound){ 
+                    System.out.println("LOGIN BERHASIL >>");
+                    System.out.println("Selamat datang " + userPelanggan[noUser][0] + "!");
+                    
+                } else {
+                    System.out.println("MAAF LOGIN GAGAL. SILAHKAN COBA LAGI");
+                }
+            while(!IDfound){
+                System.out.println("------- LOGIN --------");
+                System.out.print("Masukkan Username : ");
+                username = sc.nextLine();
+                System.out.print("Masukkan Password : ");
+                password = sc.nextLine();
+                for(int i = 0; i < userPelanggan.length; i++ ){ 
+                if (username.equals(userPelanggan[i][0]) && password.equals(userPelanggan[i][1])){
+                    IDfound = true;
+                    noUser = i;
+                    break;
+                }
+            }
+            if (IDfound){ 
+                    System.out.println("LOGIN BERHASIL >>");
+                    System.out.println("Selamat datang " + userPelanggan[noUser][0] + "!");
+                    
+                } else {
+                    System.out.println("MAAF LOGIN GAGAL. SILAHKAN COBA LAGI");
+                }
+             }
+
+        } if (pilih > 2) {
+            System.out.println("Pilihan anda tidak valid");
+        } 
+
 
         String[] menu = { "", "Popcorn", "Churros", "Kentang Goreng", "Orange Juice", "Jasmine Tea", "Mineral Water",
                 "Lemon Tea", "coca cola" };
@@ -321,6 +451,7 @@ public class project_bioskop7{
             System.out.println("=======================================");
             System.out.println("||           STRUK BIOSKOP           ||");
             System.out.println("=======================================");
+            System.out.println("||ATAS NAMA     : " + userPelanggan[noUser][0] +            "||");     
             System.out.println("||NAMA FILM     : " + dataFilmBioskop[filmID][0] + "||");
             System.out.println("||LOKASI        : " + dataBioskop[bioskop] +            "||");
             System.out.println("---------------------------------------");
@@ -331,18 +462,12 @@ public class project_bioskop7{
                     System.out.println("||Tgl Tayang    : " + dataFilmBioskop[filmID][4]+ "  ||");
                     System.out.println("||Jam Tayang    : " + dataFilmBioskop[filmID][5]+ "  ||");
                     System.out.println("||Harga satuan  : " + dataFilmBioskop[i][3] + "         ||");
-                    //System.out.println("diskon yang didapatkan : " + diskon);
+                    System.out.println("||Harga Tiket   : " + "Rp. " + numTickets*30000);
                     System.out.println("||Sebelum diskon : " + "Rp. " + totalHarga);
                     System.out.println("----------------------------------------");
                     break;
                 }
             }
-            // System.out.println("---------------------------------");
-            // for (int i = 0; i < tersedia.length; i++) {
-            // System.out.print("Seat " + (i + 1) + " : No. " + tersedia[i]);
-            // System.out.println();
-
-            // }
             if (pilihan.equalsIgnoreCase("y")) {
                 System.out.println("=========================================");
                 System.out.println("|| Makanan & Minuman");
@@ -355,10 +480,10 @@ public class project_bioskop7{
             }
 
             System.out.println("=========================================");
-            System.out.println("||Total harga : Rp " + poinMembership );
+            System.out.println("||Total harga : Rp. " + poinMembership );
             System.out.println("===Terima kasih telah memesan di Bioskop kami!===");
 
         }
     }
-}
+    }
 
