@@ -382,28 +382,29 @@ public class project_bioskop7 {
                     System.out.println("---------------------------------------");
                     for (i = 0; i < dataFilmBioskop.length; i++) {
                         if (movie.equalsIgnoreCase(dataFilmBioskop[i][0])) {
+                            System.out.println("||--------------KETERANGAN---------------");
                             System.out.println("||jumlah tiket  : " + numTickets + "                    ||");
                             System.out.println("||studio        : " + dataFilmBioskop[i][1] + "             ||");
                             System.out.println("||Tgl Tayang    : " + dataFilmBioskop[filmID][4] + "  ||");
                             System.out.println("||Jam Tayang    : " + dataFilmBioskop[filmID][5] + "  ||");
+                            System.out.println("||-----------------HARGA-----------------");
                             System.out.println("||Harga satuan  : " + dataFilmBioskop[i][3] + "         ||");
-                            System.out.println("||Harga Tiket   : " + "Rp. " + numTickets * 30000);
-                            System.out.println("||Sebelum diskon : " + "Rp. " + totalHarga);
-                            System.out.println("----------------------------------------");
+                            System.out.println("||Harga seluruh   :                         ||");
+                            System.out.println("||" + 30000 + "     " + numTickets + "      = " +"Rp. " + (numTickets*30000) + "    ||");
+                            System.out.println("-----------------------------------------");
                             break;
                         }
                     }
                     if (pilihan.equalsIgnoreCase("y")) {
                         System.out.println("=========================================");
-                        System.out.println("|| Makanan & Minuman");
+                        System.out.println("||------------Makanan & Minuman--------------");
                         for (i = 0; i < counter; i++) {
-                            System.out.println("|| " + menu[displayMenu[i]] + " : " + displayJumlahMenu[i] + "   Rp. "
+                            System.out.println("|| " + menu[displayMenu[i]] + " : ");
+                            System.out.println("|| "+ hargaMenu[displayMenu[i]]+"   "+ displayJumlahMenu[i] +"  Rp. "
                                     + hargaMenu[displayMenu[i]] * displayJumlahMenu[i]);
                         }
-                    } else {
-
-                    }
-
+                    }  
+                    System.out.println("||Total sebelum diskon : " + "Rp. " + totalHarga);
                     System.out.println("=========================================");
                     System.out.println("||Total harga : Rp. " + poinMembership);
                     System.out.println("===Terima kasih telah memesan di Bioskop kami!===");
