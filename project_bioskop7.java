@@ -15,35 +15,27 @@ public class project_bioskop7 {
 
         int noUser = 0;
         String[][] userKrywn = new String[4][3];
-        String[][] userPelanggan = new String[5][2];
 
         // karyawan
         userKrywn[0][0] = "Bayu";
-        userKrywn[0][1] = "B7073";
+        userKrywn[0][1] = "admin7073";
         userKrywn[0][2] = "Admin";
 
         userKrywn[1][0] = "Devita";
-        userKrywn[1][1] = "D7002";
+        userKrywn[1][1] = "user7002";
         userKrywn[1][2] = "user";
 
         userKrywn[2][0] = "Kartika";
-        userKrywn[2][1] = "K7116";
+        userKrywn[2][1] = "user7116";
         userKrywn[2][2] = "user";
 
         userKrywn[3][0] = "Syaqira";
-        userKrywn[3][1] = "S7123";
+        userKrywn[3][1] = "user7123";
         userKrywn[2][2] = "user";
-
-        // user
-        userPelanggan[0][0] = "Syaqira";
-        userPelanggan[0][1] = "Syaqira123";
-
-        userPelanggan[1][0] = "Devita";
-        userPelanggan[1][1] = "Devita1234";
 
         boolean IDfound = false;
 
-        // laman login admin
+        // laman login admin dan user
         System.out.println("------- LOGIN --------");
         System.out.print("Masukkan Username : ");
         String username = sc.nextLine();
@@ -83,6 +75,7 @@ public class project_bioskop7 {
                 System.out.println("LOGIN BERHASIL >>");
                 System.out.println("Selamat datang " + userKrywn[noUser][0] + "!");
 
+            //laman user   
                 String[] menu = { "", "Popcorn", "Churros", "Kentang Goreng", "Orange Juice", "Jasmine Tea",
                         "Mineral Water",
                         "Lemon Tea", "coca cola" };
@@ -383,7 +376,7 @@ public class project_bioskop7 {
                     System.out.println("=======================================");
                     System.out.println("||           STRUK BIOSKOP           ||");
                     System.out.println("=======================================");
-                    System.out.println("||ATAS NAMA     : " + userPelanggan[noUser][0] + "||");
+                    System.out.println("||ATAS NAMA     : " + userKrywn[noUser][0] + "||");
                     System.out.println("||NAMA FILM     : " + dataFilmBioskop[filmID][0] + "||");
                     System.out.println("||LOKASI        : " + dataBioskop[bioskop] + "||");
                     System.out.println("---------------------------------------");
@@ -415,9 +408,32 @@ public class project_bioskop7 {
                     System.out.println("||Total harga : Rp. " + poinMembership);
                     System.out.println("===Terima kasih telah memesan di Bioskop kami!===");
 
-                }
+                //metode pembayaran
+                    int [] nomor = {0, 1, 2, 3, 4, 5, 6};
+                    String [] metodePembayaran = {"", "Kartu Kredit", "Transfer Bank", "DANA", "ShopeePay", "LinkAja", "OVO"};
 
-            }
+                    do{ 
+                        System.out.println("Pilih metode pembayaran:");
+                            for (i = 1; i < metodePembayaran.length; i++ ){
+                        System.out.println(nomor[i] + ". " + metodePembayaran[i]);
+                    }      
+                        System.out.println("-----------------------");
+                        System.out.print("pilih : ");
+                        int PilihMetode = sc.nextInt();
+                        sc.nextLine();
+                        
+                            if(PilihMetode > 0 && PilihMetode < metodePembayaran.length){
+                                    System.out.println("anda memilih metode pembayaran " + metodePembayaran[PilihMetode]);
+                                    System.out.println("SELANJUTNYA >>>>");
+                                    sc.nextLine();
+                                    
+                            }else if (PilihMetode > 6){
+                                System.out.println("pilihan anda tidak valid, silahkan pilih lagi");
+                                System.out.println("-----------------------------------------------");
+                        }
+                    }while(true);
+                }
+            } 
         } else {
             System.out.println("MAAF LOGIN GAGAL. SILAHKAN COBA LAGI");
         }
