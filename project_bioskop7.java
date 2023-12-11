@@ -365,11 +365,9 @@ public class project_bioskop7 {
                     // poin member
                     System.out.print("Masukkan total pembelian tiket: ");
                     int hasil = numTickets * hargaTiket;
-                    // double diskon = hasil * 0.1;
 
                     totalHarga += hasil;
                     double poinMembership = hitungDiskon(totalHarga);
-                    // System.out.println("harga tiket : " + " Rp. " + hargaTiket);
 
                     // total keseluruhan
                     System.out.println();
