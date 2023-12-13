@@ -39,6 +39,10 @@ public class project_bioskop7 {
         boolean IDfound = false;
 
         int TotalTiket[][] = {{0},{0},{0},{0},{0}};
+        int TotalMenu[][] = {{0},{0},{0},{0},{0},{0},{0},{0},{0}};
+        String[] menu = { "", "Popcorn", "Churros", "Kentang Goreng", "Orange Juice", "Jasmine Tea",
+                            "Mineral Water",
+                            "Lemon Tea", "coca cola" };
 
         String[][] dataFilmBioskop = new String[5][6];
 
@@ -64,7 +68,7 @@ public class project_bioskop7 {
                         dataFilmBioskop[3][0] = "Inception";
                         dataFilmBioskop[3][1] = "studio 5";
                         dataFilmBioskop[3][3] = "Rp.30.000,00";
-                        dataFilmBioskop[3][5] = "Rabu, 3 oktober 2023";
+                        dataFilmBioskop[3][4] = "Rabu, 3 oktober 2023";
                         dataFilmBioskop[3][5] = "17.00";
 
                         dataFilmBioskop[4][0] = "Barbie";
@@ -125,19 +129,49 @@ public class project_bioskop7 {
                     System.out.println("Selamat datang " + userKrywn[noUser][0] + "!");
                     
                 //pelaporan admin
-                        System.out.println("---------------PELAPORAN-----------------");
-                    for (int i = 0; i < TotalTiket.length; i++) {
-                        System.out.println(dataFilmBioskop[i][0]+" : "+TotalTiket[i][0]);
+                        System.out.println("============================================");
+                        System.out.println("||               PELAPORAN                ||");
+                        System.out.println("============================================");
+
+                    //pelaporan film
+                        System.out.println
+                                ("---------------------------------------------");
+                                System.out.printf("| %-5s | %-20s | %-10s |", 
+                                    "No", "Nama Film", "Penjualan");
+                    System.out.println("");
+                    System.out.println 
+                                ("---------------------------------------------");
+                        for (int i = 0; i < TotalTiket.length; i++) {            
+                                System.out.printf("| %-5s | %-20s | %-10s |", 
+                                i+1, dataFilmBioskop[i][0] , TotalTiket[i][0]);
+                    System.out.println("");
                     }
+                    System.out.println
+                        ("---------------------------------------------");
+
+                    //pelaporan menu
+                        System.out.println
+                                ("---------------------------------------------");
+                                System.out.printf("| %-5s | %-20s | %-10s |", 
+                                    "No", "Nama Menu", "Penjualan");
+                    System.out.println("");
+                    System.out.println 
+                                ("---------------------------------------------");
+                        for (int i = 1; i < TotalMenu.length; i++) {            
+                                System.out.printf("| %-5s | %-20s | %-10s |", 
+                                i, menu[i] , TotalMenu[i][0]);
+                    System.out.println("");
+                    }
+                    System.out.println
+                        ("---------------------------------------------");
                     sc.nextLine();
                 } else {
                     System.out.println("LOGIN BERHASIL >>");
                     System.out.println("Selamat datang " + userKrywn[noUser][0] + "!");
 
+                
                     // laman user
-                    String[] menu = { "", "Popcorn", "Churros", "Kentang Goreng", "Orange Juice", "Jasmine Tea",
-                            "Mineral Water",
-                            "Lemon Tea", "coca cola" };
+                    
                     String lagi = "", movie = "";
                     int counter = 0, numMenu = 0, hargaTiket = 30000, bioskop = 0;
                     int[] hargaMenu = { 0, 20000, 15000, 14000, 13000, 10000, 5000, 12000, 15000 };
@@ -165,10 +199,6 @@ public class project_bioskop7 {
                         dataBioskop[1] = "CGV";
                         dataBioskop[2] = "XXI";
                         dataBioskop[3] = "Movimax";
-
-                        
-
-                        
 
                         // pilih bioskop
                         System.out.println("---------Daftar Bioskop---------");
@@ -244,13 +274,12 @@ public class project_bioskop7 {
 
                         boolean filmTersedia = false;
 
-                        System.out.println("---------Film Tersedia!---------");
+                        System.out.println("-------------Film Tersedia!-------------");
                         System.out.println("Film        : " + dataFilmBioskop[filmID][0]);
                         System.out.println("studio      : " + dataFilmBioskop[filmID][1]);
                         System.out.println("Tanggal     : " + dataFilmBioskop[filmID][4]);
                         System.out.println("jam         : " + dataFilmBioskop[filmID][5]);
                         System.out.println("Harga       : " + dataFilmBioskop[filmID][3]);
-                        System.out.println("---------------------------------");
 
                         // jumlah tiket
                         System.out.println("----------------------------------------");
@@ -370,6 +399,8 @@ public class project_bioskop7 {
                                     sc.nextLine();
                                     System.out.println("--------------------------");
 
+                                    TotalMenu[pilihanMenu][0] += numMenu;
+
                                     // display
                                     displayMenu[counter] = pilihanMenu;
                                     displayJumlahMenu[counter] = numMenu;
@@ -397,53 +428,75 @@ public class project_bioskop7 {
                         }
 
                         // poin member
-                        System.out.print("Masukkan total pembelian tiket: ");
                         int hasil = numTickets * hargaTiket;
-                        // double diskon = hasil * 0.1;
 
                         totalHarga += hasil;
                         double poinMembership = hitungDiskon(totalHarga);
-                        // System.out.println("harga tiket : " + " Rp. " + hargaTiket);
 
                         // total keseluruhan
                         System.out.println();
-                        System.out.println("=======================================");
-                        System.out.println("||           STRUK BIOSKOP           ||");
-                        System.out.println("=======================================");
-                        System.out.println("||ATAS NAMA     : " + userKrywn[noUser][0] + "||");
-                        System.out.println("||NAMA FILM     : " + dataFilmBioskop[filmID][0] + "||");
-                        System.out.println("||LOKASI        : " + dataBioskop[bioskop] + "||");
-                        System.out.println("---------------------------------------");
+                        System.out.println("===========================================");
+                        System.out.println("||             STRUK BIOSKOP             ||");
+                        System.out.println("===========================================");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "ATAS NAMA ", userKrywn[noUser][0], " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "NAMA FILM ", dataFilmBioskop[filmID][0], " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "LOKASI ", dataBioskop[bioskop], " ");
+                        System.out.println("");
                         for (i = 0; i < dataFilmBioskop.length; i++) {
                             if (movie.equalsIgnoreCase(dataFilmBioskop[i][0])) {
-                                System.out.println("||--------------KETERANGAN---------------");
-                                System.out.println("||jumlah tiket  : " + numTickets + "                    ||");
-                                System.out.println("||studio        : " + dataFilmBioskop[i][1] + "             ||");
-                                System.out.println("||Tgl Tayang    : " + dataFilmBioskop[filmID][4] + "  ||");
-                                System.out.println("||Jam Tayang    : " + dataFilmBioskop[filmID][5] + "  ||");
-                                System.out.println("||-----------------HARGA-----------------");
-                                System.out.println("||Harga satuan  : " + dataFilmBioskop[i][3] + "         ||");
-                                System.out.println("||Harga seluruh   :                         ||");
-                                System.out.println("||" + 30000 + "     " + numTickets + "      = " + "Rp. "
-                                        + (numTickets * 30000) + "    ||");
-                                System.out.println("-----------------------------------------");
+                        System.out.println("||--------------KETERANGAN---------------||");
+                                 System.out.printf("||%-13s : %-22s ||", 
+                                "jumlah tiket ", numTickets, " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "studio ", dataFilmBioskop[i][1], " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "Tgl Tayang ", dataFilmBioskop[filmID][4], " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "Jam Tayang ", dataFilmBioskop[filmID][5], " ");
+                        System.out.println("");
+                        System.out.println("||-----------------HARGA-----------------||");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "Harga satuan ", dataFilmBioskop[i][3], " ");
+                        System.out.println("");
+                        System.out.printf("||%-38s ||", 
+                                "Harga Seluruh ");
+                        System.out.println("");
+                        System.out.printf("||%-10s | %-10s | %-12s ||", 
+                                30000, numTickets, (numTickets * 30000));
+                        System.out.println("");
+                                System.out.println("||=======================================||");
                                 break;
                             }
                         }
                         if (pilihan.equalsIgnoreCase("y")) {
-                            System.out.println("=========================================");
-                            System.out.println("||------------Makanan & Minuman--------------");
+                                System.out.println("||----------Makanan & Minuman------------||");
                             for (i = 0; i < counter; i++) {
-                                System.out.println("|| " + menu[displayMenu[i]] + " : ");
-                                System.out.println(
-                                        "|| " + hargaMenu[displayMenu[i]] + "   " + displayJumlahMenu[i] + "  Rp. "
-                                                + hargaMenu[displayMenu[i]] * displayJumlahMenu[i]);
+                                System.out.printf("||%-13s : %-22s ||", 
+                                        menu[displayMenu[i]], " ");
+                        System.out.println("");
+                                System.out.printf("||%-10s | %-10s | %-12s ||", 
+                                        hargaMenu[displayMenu[i]], displayJumlahMenu[i], hargaMenu[displayMenu[i]] * displayJumlahMenu[i]);
+                                System.out.println("");
+                                System.out.println("||---------------------------------------||");
                             }
                         }
-                        System.out.println("||Total sebelum diskon : " + "Rp. " + totalHarga);
-                        System.out.println("=========================================");
-                        System.out.println("||Total harga : Rp. " + poinMembership);
-                        System.out.println("===Terima kasih telah memesan di Bioskop kami!===");
+                        System.out.printf("||%-20s : %-2s %-10s ||", 
+                                "Total sebelum diskon", "Rp. ", totalHarga);
+                        System.out.println("");
+                                System.out.println("||---------------------------------------||");
+                        System.out.printf("||%-20s : %-2s %-10s ||", 
+                                "Total harga", "Rp. ", poinMembership);
+                        System.out.println("");
+                        System.out.println("||                                       ||");
+                        System.out.println("||======TERIMA KASIH TELAH MEMESAN!======||");
 
                         // metode pembayaran
                         int[] nomor = { 0, 1, 2, 3, 4, 5, 6 };
@@ -451,11 +504,13 @@ public class project_bioskop7 {
                                 "LinkAja", "OVO" };
 
                         do {
+                            System.out.println("");
+                            System.out.println("----------------------------");
                             System.out.println("Pilih metode pembayaran:");
                             for (i = 1; i < metodePembayaran.length; i++) {
                                 System.out.println(nomor[i] + ". " + metodePembayaran[i]);
                             }
-                            System.out.println("-----------------------");
+                            System.out.println("----------------------------");
                             System.out.print("pilih : ");
                             PilihMetode = sc.nextInt();
                             sc.nextLine();
