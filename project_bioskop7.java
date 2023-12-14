@@ -61,33 +61,33 @@ public class project_bioskop7 {
         // Menambahkan data film dan studio
                         dataFilmBioskop[0][0] = "Yowis ben";
                         dataFilmBioskop[0][1] = "studio 1";
-                        dataFilmBioskop[0][3] = "Rp.30.000,00";
-                        dataFilmBioskop[0][4] = "Senin, 1 Oktober 2023";
-                        dataFilmBioskop[0][5] = "13.00";
+                        dataFilmBioskop[0][2] = "Rp.30.000,00";
+                        dataFilmBioskop[0][3] = "Senin, 1 Oktober 2023";
+                        dataFilmBioskop[0][4] = "13.00";
 
                         dataFilmBioskop[1][0] = "Joker";
                         dataFilmBioskop[1][1] = "studio 4";
-                        dataFilmBioskop[1][3] = "Rp.30.000,00";
-                        dataFilmBioskop[1][4] = "Kamis, 4 Oktober 2023";
-                        dataFilmBioskop[1][5] = "15.00";
+                        dataFilmBioskop[1][2] = "Rp.30.000,00";
+                        dataFilmBioskop[1][3] = "Kamis, 4 Oktober 2023";
+                        dataFilmBioskop[1][4] = "15.00";
 
                         dataFilmBioskop[2][0] = "Pamali";
                         dataFilmBioskop[2][1] = "studio 3";
-                        dataFilmBioskop[2][3] = "Rp.30.000,00";
-                        dataFilmBioskop[2][4] = "selasa, 2 oktober 2023";
-                        dataFilmBioskop[2][5] = "12.00";
+                        dataFilmBioskop[2][2] = "Rp.30.000,00";
+                        dataFilmBioskop[2][3] = "selasa, 2 oktober 2023";
+                        dataFilmBioskop[2][4] = "12.00";
 
                         dataFilmBioskop[3][0] = "Inception";
                         dataFilmBioskop[3][1] = "studio 5";
-                        dataFilmBioskop[3][3] = "Rp.30.000,00";
-                        dataFilmBioskop[3][4] = "Rabu, 3 oktober 2023";
-                        dataFilmBioskop[3][5] = "17.00";
+                        dataFilmBioskop[3][2] = "Rp.30.000,00";
+                        dataFilmBioskop[3][3] = "Rabu, 3 oktober 2023";
+                        dataFilmBioskop[3][4] = "17.00";
 
                         dataFilmBioskop[4][0] = "Barbie";
                         dataFilmBioskop[4][1] = "studio 2";
-                        dataFilmBioskop[4][3] = "Rp.30.000,00";
-                        dataFilmBioskop[4][4] = "jumat, 5 oktober 2023";
-                        dataFilmBioskop[4][5] = "19.00";
+                        dataFilmBioskop[4][2] = "Rp.30.000,00";
+                        dataFilmBioskop[4][3] = "jumat, 5 oktober 2023";
+                        dataFilmBioskop[4][4] = "19.00";
 
         do {
             System.out.println("======WELCOME=====");
@@ -179,11 +179,9 @@ public class project_bioskop7 {
                     sc.nextLine();
                 } else {
                     System.out.println("LOGIN BERHASIL >>");
-                    System.out.println("Selamat datang " + userKrywn[noUser][0] + "!");
+                    System.out.println("Selamat datang " + userKrywn[noUser][0] + "!"); 
 
-                
                 // laman user
-                    
                     String lagi = "", movie = "";
                     int counter = 0, numMenu = 0, hargaTiket = 30000, bioskop = 0;
                     int[] hargaMenu = { 0, 20000, 15000, 14000, 13000, 10000, 5000, 12000, 15000 };
@@ -289,9 +287,9 @@ public class project_bioskop7 {
                         System.out.println("-------------Film Tersedia!-------------");
                         System.out.println("Film        : " + dataFilmBioskop[filmID][0]);
                         System.out.println("studio      : " + dataFilmBioskop[filmID][1]);
-                        System.out.println("Tanggal     : " + dataFilmBioskop[filmID][4]);
-                        System.out.println("jam         : " + dataFilmBioskop[filmID][5]);
-                        System.out.println("Harga       : " + dataFilmBioskop[filmID][3]);
+                        System.out.println("Tanggal     : " + dataFilmBioskop[filmID][3]);
+                        System.out.println("jam         : " + dataFilmBioskop[filmID][4]);
+                        System.out.println("Harga       : " + dataFilmBioskop[filmID][2]);
 
                         // jumlah tiket
                         System.out.println("----------------------------------------");
@@ -446,6 +444,7 @@ public class project_bioskop7 {
                         double diskon = hitungDiskon(totalHarga);
 
                         //Penawaran membership
+                         System.out.println("--------------------------------------------------");
                         System.out.println("Apakah anda ingin mendaftar sebagai member? (y/t)");
                         String member = sc.nextLine();
 
