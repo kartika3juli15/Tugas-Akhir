@@ -2,11 +2,21 @@ import java.util.Scanner;
 
 public class project_bioskop7 {
 
-    private static double hitungDiskon(double poinMembership) {
-        if (poinMembership < 85000) {
-            return poinMembership;
+    //diskon
+    public static double hitungDiskon(double diskon) {
+        if (diskon < 85000) {
+            return diskon;
         } else {
-            return poinMembership - (poinMembership * 0.1);
+            return diskon - (diskon * 0.1);
+        }
+    }
+
+    //poin membership
+    public static int poin (int poin){ 
+        if (poin < 5000){
+            return 0;
+        }else{
+            return poin;
         }
     }
 
@@ -18,6 +28,8 @@ public class project_bioskop7 {
         int choice;
         String[][] userKrywn = new String[4][3];
         int PilihMetode;
+        int dapatPoin = 0;
+        int hasilPoin = 0;
 
         // karyawan
         userKrywn[0][0] = "Bayu";
@@ -34,7 +46,7 @@ public class project_bioskop7 {
 
         userKrywn[3][0] = "Syaqira";
         userKrywn[3][1] = "user7123";
-        userKrywn[2][2] = "user";
+        userKrywn[3][2] = "user";
 
         boolean IDfound = false;
 
@@ -133,7 +145,7 @@ public class project_bioskop7 {
                         System.out.println("||               PELAPORAN                ||");
                         System.out.println("============================================");
 
-                    //pelaporan film
+                //pelaporan film
                         System.out.println
                                 ("---------------------------------------------");
                                 System.out.printf("| %-5s | %-20s | %-10s |", 
@@ -149,7 +161,7 @@ public class project_bioskop7 {
                     System.out.println
                         ("---------------------------------------------");
 
-                    //pelaporan menu
+                //pelaporan menu
                         System.out.println
                                 ("---------------------------------------------");
                                 System.out.printf("| %-5s | %-20s | %-10s |", 
@@ -170,7 +182,7 @@ public class project_bioskop7 {
                     System.out.println("Selamat datang " + userKrywn[noUser][0] + "!");
 
                 
-                    // laman user
+                // laman user
                     
                     String lagi = "", movie = "";
                     int counter = 0, numMenu = 0, hargaTiket = 30000, bioskop = 0;
@@ -184,7 +196,7 @@ public class project_bioskop7 {
                     System.out.println("SELAMAT DATANG DI BIOSKOP KAMI!");
                     System.out.println("==============================");
 
-                    // umur
+                // umur
                     System.out.print("masukkan umur anda : ");
                     int umur = sc.nextInt();
                     sc.nextLine();
@@ -194,13 +206,13 @@ public class project_bioskop7 {
                         System.out.println("umur " + umur + " sudah cukup umur");
                         System.out.println("--------------------------");
 
-                        // bioskop pilihan
+                    // bioskop pilihan
                         dataBioskop[0] = " ";
                         dataBioskop[1] = "CGV";
                         dataBioskop[2] = "XXI";
                         dataBioskop[3] = "Movimax";
 
-                        // pilih bioskop
+                    // pilih bioskop
                         System.out.println("---------Daftar Bioskop---------");
                         for (i = 1; i < dataBioskop.length; i++) {
                             System.out.println(i + ". " + dataBioskop[i]);
@@ -431,7 +443,25 @@ public class project_bioskop7 {
                         int hasil = numTickets * hargaTiket;
 
                         totalHarga += hasil;
-                        double poinMembership = hitungDiskon(totalHarga);
+                        double diskon = hitungDiskon(totalHarga);
+
+                        //Penawaran membership
+                        System.out.println("Apakah anda ingin mendaftar sebagai member? (y/t)");
+                        String member = sc.nextLine();
+
+                        if(member.equalsIgnoreCase("y")) {
+                           dapatPoin = numTickets*1000; 
+                           System.out.println("anda mendapatkan poin 1000 pada tiap pembelian tiket");
+                           System.out.println("total poin anda sekarang adalah " + dapatPoin);
+                        //menukar poin
+                        System.out.println("apakah anda ingin menukar poin anda (minimal 5000 poin)?? (y/t)");
+                        String tukar = sc.nextLine();
+                        if (tukar.equalsIgnoreCase("y")){
+                            hasilPoin = poin(dapatPoin);
+                        }
+                        } else {
+                        System.out.println("Terimakasih telah meluangkan waktunya untuk mengisi membership");
+                        }
 
                         // total keseluruhan
                         System.out.println();
@@ -485,18 +515,29 @@ public class project_bioskop7 {
                                 System.out.printf("||%-10s | %-10s | %-12s ||", 
                                         hargaMenu[displayMenu[i]], displayJumlahMenu[i], hargaMenu[displayMenu[i]] * displayJumlahMenu[i]);
                                 System.out.println("");
-                                System.out.println("||---------------------------------------||");
-                            }
+                            }System.out.println("||---------------------------------------||");
                         }
+                        System.out.printf("||%-20s : %-15s ||", 
+                                "Poin member ", dapatPoin );
+                        System.out.println("");
+                        System.out.printf("||%-20s : %-15s ||", 
+                                "Penukaran poin ", hasilPoin );
+                        System.out.println("");
                         System.out.printf("||%-20s : %-2s %-10s ||", 
                                 "Total sebelum diskon", "Rp. ", totalHarga);
                         System.out.println("");
                                 System.out.println("||---------------------------------------||");
                         System.out.printf("||%-20s : %-2s %-10s ||", 
-                                "Total harga", "Rp. ", poinMembership);
+                                "Total setelah diskon", "Rp. ", diskon);
+                        System.out.println("");
+                        System.out.println("||---------------------------------------||");
+                        System.out.printf("||%-20s : %-2s %-10s ||", 
+                                "Total harga ", "Rp. ", diskon-hasilPoin);
                         System.out.println("");
                         System.out.println("||                                       ||");
                         System.out.println("||======TERIMA KASIH TELAH MEMESAN!======||");
+
+                        
 
                         // metode pembayaran
                         int[] nomor = { 0, 1, 2, 3, 4, 5, 6 };
