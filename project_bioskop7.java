@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class testMembership {
+public class project_bioskop7 {
 
     //diskon
     public static double hitungDiskon(double diskon) {
