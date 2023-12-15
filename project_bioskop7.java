@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class project_bioskop7 {
+public class testMembership {
 
     //diskon
     public static double hitungDiskon(double diskon) {
@@ -13,7 +13,7 @@ public class project_bioskop7 {
 
     //poin membership
     public static int poin (int poin){ 
-        if (poin < 5000){
+        if (poin <= 5000){
             return 0;
         }else{
             return poin;
@@ -26,27 +26,33 @@ public class project_bioskop7 {
         String username = null, password = null;
         int noUser = 0;
         int choice;
-        String[][] userKrywn = new String[4][3];
+        String[][] userKrywn = new String[4][4];
         int PilihMetode;
         int dapatPoin = 0;
         int hasilPoin = 0;
+        int kumpulPoin = 0;
+        int cari = 0;
 
         // karyawan
         userKrywn[0][0] = "Bayu";
         userKrywn[0][1] = "admin7073";
         userKrywn[0][2] = "Admin";
+        userKrywn[0][3] = "Bukan Membership";
 
         userKrywn[1][0] = "Devita";
         userKrywn[1][1] = "user7002";
         userKrywn[1][2] = "user";
+        userKrywn[1][3] = "Membership";
 
         userKrywn[2][0] = "Kartika";
         userKrywn[2][1] = "user7116";
         userKrywn[2][2] = "user";
+        userKrywn[2][3] = "Bukan Membership";
 
         userKrywn[3][0] = "Syaqira";
         userKrywn[3][1] = "user7123";
         userKrywn[3][2] = "user";
+        userKrywn[3][3] = "Bukan Membership";
 
         boolean IDfound = false;
 
@@ -93,7 +99,7 @@ public class project_bioskop7 {
             System.out.println("======WELCOME=====");
             System.out.println("1. login");
             System.out.println("2. exit");
-            System.out.print("-->");
+            System.out.print("--> ");
             choice = sc.nextInt();
             sc.nextLine();
 
@@ -139,7 +145,19 @@ public class project_bioskop7 {
                 if (userKrywn[noUser][2].equals("Admin")) {
                     System.out.println("LOGIN BERHASIL >>");
                     System.out.println("Selamat datang " + userKrywn[noUser][0] + "!");
+                    System.out.println("");
                     
+             do{
+                System.out.println("--MENU ADMIN--");
+                System.out.println("1. Pelaporan");
+                System.out.println("2. anggota Membership");
+                System.out.println("3. exit");
+                System.out.print("--> ");
+                cari = sc.nextInt();
+                sc.nextLine();
+                
+                switch (cari){ 
+                    case 1 :
                 //pelaporan admin
                         System.out.println("============================================");
                         System.out.println("||               PELAPORAN                ||");
@@ -177,10 +195,30 @@ public class project_bioskop7 {
                     System.out.println
                         ("---------------------------------------------");
                     sc.nextLine();
+                    break;
+
+                case 2 :
+                    System.out.println
+                                ("---------------------------------------------");
+                               System.out.printf("| %-5s | %-20s | %-10s |", 
+                                    "No", "Nama Pengguna", "Poin");
+                    System.out.println("");
+                    int a = 1;
+                    System.out.println 
+                                ("---------------------------------------------");
+                                System.out.printf("| %-5s | %-20s | %-10s |", 
+                                    a, userKrywn[1][0], kumpulPoin-hasilPoin);
+                    System.out.println("");
+                    System.out.println
+                        ("---------------------------------------------");
+                    sc.nextLine();
+                } 
+            }while (cari < 3);
+
                 } else {
                     System.out.println("LOGIN BERHASIL >>");
                     System.out.println("Selamat datang " + userKrywn[noUser][0] + "!"); 
-
+                
                 // laman user
                     String lagi = "", movie = "";
                     int counter = 0, numMenu = 0, hargaTiket = 30000, bioskop = 0;
@@ -442,25 +480,7 @@ public class project_bioskop7 {
 
                         totalHarga += hasil;
                         double diskon = hitungDiskon(totalHarga);
-
-                        //Penawaran membership
-                         System.out.println("--------------------------------------------------");
-                        System.out.println("Apakah anda ingin mendaftar sebagai member? (y/t)");
-                        String member = sc.nextLine();
-
-                        if(member.equalsIgnoreCase("y")) {
-                           dapatPoin = numTickets*1000; 
-                           System.out.println("anda mendapatkan poin 1000 pada tiap pembelian tiket");
-                           System.out.println("total poin anda sekarang adalah " + dapatPoin);
-                        //menukar poin
-                        System.out.println("apakah anda ingin menukar poin anda (minimal 5000 poin)?? (y/t)");
-                        String tukar = sc.nextLine();
-                        if (tukar.equalsIgnoreCase("y")){
-                            hasilPoin = poin(dapatPoin);
-                        }
-                        } else {
-                        System.out.println("Terimakasih telah meluangkan waktunya untuk mengisi membership");
-                        }
+                        
 
                         // total keseluruhan
                         System.out.println();
@@ -486,10 +506,104 @@ public class project_bioskop7 {
                                 "studio ", dataFilmBioskop[i][1], " ");
                         System.out.println("");
                         System.out.printf("||%-13s : %-22s ||", 
-                                "Tgl Tayang ", dataFilmBioskop[filmID][4], " ");
+                                "Tgl Tayang ", dataFilmBioskop[filmID][3], " ");
                         System.out.println("");
                         System.out.printf("||%-13s : %-22s ||", 
-                                "Jam Tayang ", dataFilmBioskop[filmID][5], " ");
+                                "Jam Tayang ", dataFilmBioskop[filmID][4], " ");
+                        System.out.println("");
+                        System.out.println("||-----------------HARGA-----------------||");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "Harga satuan ", dataFilmBioskop[i][3], " ");
+                        System.out.println("");
+                        System.out.printf("||%-38s ||", 
+                                "Harga Seluruh ");
+                        System.out.println("");
+                        System.out.printf("||%-10s | %-10s | %-12s ||", 
+                                30000, numTickets, (numTickets * 30000));
+                        System.out.println("");
+                                System.out.println("||=======================================||");
+                                break;
+                            }
+                        }
+                        if (pilihan.equalsIgnoreCase("y")) {
+                                System.out.println("||----------Makanan & Minuman------------||");
+                            for (i = 0; i < counter; i++) {
+                                System.out.printf("||%-13s : %-22s ||", 
+                                        menu[displayMenu[i]], " ");
+                        System.out.println("");
+                                System.out.printf("||%-10s | %-10s | %-12s ||", 
+                                        hargaMenu[displayMenu[i]], displayJumlahMenu[i], hargaMenu[displayMenu[i]] * displayJumlahMenu[i]);
+                                System.out.println("");
+                            }System.out.println("||---------------------------------------||");
+                        }
+                        System.out.printf("||%-20s : %-2s %-10s ||", 
+                                "Total sebelum diskon", "Rp. ", totalHarga);
+                        System.out.println("");
+                                System.out.println("||---------------------------------------||");
+                        System.out.printf("||%-20s : %-2s %-10s ||", 
+                                "Total setelah diskon", "Rp. ", diskon);
+                        System.out.println("");
+                        System.out.println("||---------------------------------------||");
+                        System.out.printf("||%-20s : %-2s %-10s ||", 
+                                "Total harga ", "Rp. ", diskon-hasilPoin);
+                        System.out.println("");
+                        System.out.println("||                                       ||");
+                        System.out.println("||======TERIMA KASIH TELAH MEMESAN!======||");
+
+                        //Penawaran membership
+                        System.out.println("---------------------------------------------------------");
+                        System.out.println("Apakah anda sudah mendaftar sebagai member? (y/t)");
+                        String member = sc.nextLine();
+
+                        if(member.equalsIgnoreCase("y")) {
+                            if (IDfound) {
+                                if (userKrywn[noUser][3].equals("Membership")) {
+                                    
+                                    dapatPoin = numTickets*1000; 
+                                    kumpulPoin += dapatPoin;
+
+                           System.out.println(userKrywn[noUser][0] + " adalah Member");
+                           System.out.println("- anda mendapatkan 1000 poin pada tiap pembelian tiket");
+                           System.out.println("- total poin anda sekarang adalah " + kumpulPoin);
+                           System.out.println("---------------------------------------------------------");
+
+                        //menukar poin
+                            System.out.println("apakah anda ingin menukar poin anda (minimal 5000 poin)?? (y/t)");
+                            String tukar = sc.nextLine();
+                                if (tukar.equalsIgnoreCase("y")){
+                                    
+                                    hasilPoin = poin(kumpulPoin);
+
+                            // total keseluruhan setelah penukaran poin
+                        System.out.println();
+                        System.out.println("===========================================");
+                        System.out.println("||             STRUK BIOSKOP             ||");
+                        System.out.println("==========================================="); 
+                        System.out.println("||      Pengguna Membership Bioskop      ||");
+                        System.out.println("-------------------------------------------");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "ATAS NAMA ", userKrywn[noUser][0], " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "NAMA FILM ", dataFilmBioskop[filmID][0], " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "LOKASI ", dataBioskop[bioskop], " ");
+                        System.out.println("");
+                        for (i = 0; i < dataFilmBioskop.length; i++) {
+                            if (movie.equalsIgnoreCase(dataFilmBioskop[i][0])) {
+                        System.out.println("||--------------KETERANGAN---------------||");
+                                 System.out.printf("||%-13s : %-22s ||", 
+                                "jumlah tiket ", numTickets, " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "studio ", dataFilmBioskop[i][1], " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "Tgl Tayang ", dataFilmBioskop[filmID][3], " ");
+                        System.out.println("");
+                        System.out.printf("||%-13s : %-22s ||", 
+                                "Jam Tayang ", dataFilmBioskop[filmID][4], " ");
                         System.out.println("");
                         System.out.println("||-----------------HARGA-----------------||");
                         System.out.printf("||%-13s : %-22s ||", 
@@ -517,7 +631,7 @@ public class project_bioskop7 {
                             }System.out.println("||---------------------------------------||");
                         }
                         System.out.printf("||%-20s : %-15s ||", 
-                                "Poin member ", dapatPoin );
+                                "Poin member ", kumpulPoin );
                         System.out.println("");
                         System.out.printf("||%-20s : %-15s ||", 
                                 "Penukaran poin ", hasilPoin );
@@ -535,9 +649,16 @@ public class project_bioskop7 {
                         System.out.println("");
                         System.out.println("||                                       ||");
                         System.out.println("||======TERIMA KASIH TELAH MEMESAN!======||");
-
+                }
+                    }else{
+                            System.out.println("-------Anda bukan member-------");
+                    }
+                        } 
+                    }if(member.equalsIgnoreCase("t")) {
+                        System.out.println("Selanjutnya-->>");
+                        }  
+                    
                         
-
                         // metode pembayaran
                         int[] nomor = { 0, 1, 2, 3, 4, 5, 6 };
                         String[] metodePembayaran = { "", "Kartu Kredit", "Transfer Bank", "DANA", "ShopeePay",
