@@ -156,8 +156,6 @@ public class project_bioskop7 {
                         
                     }
                 }
-                System.out.println(redText+"Maaf Password atau Username anda tidak valid. Silahkan coba lagi."+resetText);
-                System.out.println();
             }
             
 
@@ -172,8 +170,8 @@ public class project_bioskop7 {
                 System.out.println(yellowText+"|\tMENU ADMIN\t\t|"+resetText);
                 System.out.println(yellowText+"---------------------------------"+resetText);
                 System.out.println("|1| Pelaporan");
-                System.out.println("|2| anggota Membership");
-                System.out.println("|3| exit");
+                System.out.println("|2| Anggota Membership");
+                System.out.println("|3| Back");
                 System.out.print("Pilih Menu: ");
                 cari = sc.nextInt();
                 sc.nextLine();
@@ -622,7 +620,7 @@ public class project_bioskop7 {
                                     dapatPoin = numTickets*1000; 
                                     kumpulPoin += dapatPoin;
 
-                           System.out.println(userKrywn[noUser][0] + " adalah Member");
+                           System.out.println(yellowText+userKrywn[noUser][0] + " adalah Member"+resetText);
                            System.out.println("- anda mendapatkan 1000 poin pada tiap pembelian tiket");
                            System.out.println("- total poin anda sekarang adalah " + kumpulPoin);
                            System.out.println("---------------------------------------------------------");
@@ -711,11 +709,11 @@ public class project_bioskop7 {
                         System.out.println("||======TERIMA KASIH TELAH MEMESAN!======||");
                 }
                     }else{
-                            System.out.println("----------------Anda bukan member-----------------");
+                            System.out.println(redText+"----------------Anda bukan member-----------------"+resetText);
                     }
                         } 
                     }if(member.equalsIgnoreCase("t")) {
-                        System.out.println("Selanjutnya-->>");
+                        System.out.println(colorText+"SELANJUTNYA >>>>"+resetText);
                         }  
                     
                         
@@ -726,8 +724,9 @@ public class project_bioskop7 {
 
                         do {
                             System.out.println("");
-                            System.out.println("----------------------------");
-                            System.out.println("Pilih metode pembayaran:");
+                            System.out.println(colorText+"=========================================");
+                            System.out.println("|\tPilih Metode Pembayaran\t\t|");
+                            System.out.println("========================================="+resetText);
                             for (i = 1; i < metodePembayaran.length; i++) {
                                 System.out.println(nomor[i] + ". " + metodePembayaran[i]);
                             }
@@ -737,12 +736,12 @@ public class project_bioskop7 {
                             sc.nextLine();
 
                             if (PilihMetode > 0 && PilihMetode < metodePembayaran.length) {
-                                System.out.println("anda memilih metode pembayaran " + metodePembayaran[PilihMetode]);
-                                System.out.println("SELANJUTNYA >>>>");
+                                System.out.println(yellowText+"anda memilih metode pembayaran " + metodePembayaran[PilihMetode]+resetText);
+                                System.out.println(colorText+"SELANJUTNYA >>>>"+resetText);
                                 sc.nextLine();
 
                             } else if (PilihMetode > 6) {
-                                System.out.println("pilihan anda tidak valid, silahkan pilih lagi");
+                                System.out.println(redText+"pilihan anda tidak valid, silahkan pilih lagi"+resetText);
                                 System.out.println("-----------------------------------------------");
                             }
                         } while (PilihMetode > 6);
