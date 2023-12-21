@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class project_bioskop7 {
+
+
+    static boolean wantsToLogout = false;
     
     //diskon
     public static double hitungDiskon(double diskon) {
@@ -19,6 +22,7 @@ public class project_bioskop7 {
             return poin;
         }
     }
+
     
     
     public static void main(String[] args) {
@@ -136,6 +140,11 @@ public class project_bioskop7 {
                 case 2:
                     System.out.println(redText+"--Anda Keluar dari Program--"+resetText);
                     return;
+                default:
+                    System.out.println("Menu tidak valid!");
+                    main(args);
+                    return;
+                    
             }
 
             for (int i = 0; i < userKrywn.length; i++) {
@@ -173,7 +182,6 @@ public class project_bioskop7 {
                 }
             }
             
-
             if (IDfound) {
                 if (userKrywn[noUser][2].equals("Admin")) {
                     System.out.println("LOGIN BERHASIL >>");
@@ -234,19 +242,18 @@ public class project_bioskop7 {
                         ("---------------------------------------------");
                     System.out.println("Apakah anda ingin memilih menu lainnya (y/t)?");
                     String memilih = sc.nextLine();
-                    if (memilih.equalsIgnoreCase("y")) 
-                        System.out.println("\033[H\033[2J");
-                        System.out.flush();
-                        {
-                        System.out.println();
+                    System.out.println("\033[H\033[2J");
+                    System.out.flush();
+                    if (memilih.equalsIgnoreCase("y")){ 
+                        wantsToLogout = false;
                         System.out.println("-----Silahkan memilih menu lagi!!------");
-                    } 
-                    if (memilih.equalsIgnoreCase("t")){
-                        break;
-                        
-                    }
-                    System.out.println();
+                        System.out.println();
+                    } else{
+                        wantsToLogout = true;
+                        main(args);
+                    }System.out.println();
                     break;
+                    
                     
 
                 case 2 :
@@ -263,18 +270,20 @@ public class project_bioskop7 {
                     System.out.println("---------------------------------------------");
                     System.out.println("Apakah anda ingin memilih menu lainnya (y/t)?");
                     memilih = sc.nextLine();
-                    if (memilih.equalsIgnoreCase("y")) 
-                        System.out.println("\033[H\033[2J");
-                        System.out.flush();
-                    {
+                    System.out.println("\033[H\033[2J");
+                    System.out.flush();
+                    if (memilih.equalsIgnoreCase("y")) {
                         System.out.println("-----Silahkan memilih menu lagi!!------");
-                    } 
-                    if (memilih.equalsIgnoreCase("t")){
-                        break;
+                    } else {
+                        wantsToLogout = true;
+                        main(args);
                     }
+                    
+                }System.out.println("\033[H\033[2J");
+                    System.out.flush();
                     System.out.println();
                     
-                } 
+            
             }while (cari < 3);
             System.out.println("----------------------------------------------------");
             System.out.println("\033[H\033[2J");
@@ -352,6 +361,9 @@ public class project_bioskop7 {
                             System.out.println("film yang tersedia Movimax : ");
                             System.out.println("1. " + dataFilmBioskop[1][0]);
                             System.out.println("2. " + dataFilmBioskop[4][0]);
+                        } else {
+                            System.out.println("Bioskop tidak tersedia");
+                            return;
                         }
                         System.out.println("------------------------------------------------------");
                         System.out.print("Pilih film yang anda inginkan (ketik film) : ");
@@ -678,6 +690,8 @@ public class project_bioskop7 {
                            System.out.println("- total poin anda sekarang adalah " + kumpulPoin);
                            System.out.println("---------------------------------------------------------");
                            System.out.println();
+                           System.out.println("\033[H\033[2J");
+                           System.out.flush();
 
                         //menukar poin
                             System.out.println("apakah anda ingin menukar poin anda (minimal 5000 poin)?? (y/t)");
@@ -686,8 +700,8 @@ public class project_bioskop7 {
                                     
                                     hasilPoin = poin(kumpulPoin);
 
-                            System.out.println("\033[H\033[2J");
-                            System.out.flush();
+                                    System.out.println("\033[H\033[2J");
+                                    System.out.flush();
 
                             // total keseluruhan setelah penukaran poin
                         System.out.println();
@@ -850,6 +864,8 @@ public class project_bioskop7 {
                         System.out.println("===========================================");
                         System.out.println("||             STRUK BIOSKOP             ||");
                         System.out.println("===========================================");
+                        System.out.println("||         Bukan Membership Bioskop      ||");
+                        System.out.println("-------------------------------------------");
                         System.out.printf("||%-13s : %-22s ||", 
                                 "ATAS NAMA ", userKrywn[noUser][0], " ");
                         System.out.println("");
