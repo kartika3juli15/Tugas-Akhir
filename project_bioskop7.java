@@ -690,8 +690,6 @@ public class project_bioskop7 {
                            System.out.println("- total poin anda sekarang adalah " + kumpulPoin);
                            System.out.println("---------------------------------------------------------");
                            System.out.println();
-                           System.out.println("\033[H\033[2J");
-                           System.out.flush();
 
                         //menukar poin
                             System.out.println("apakah anda ingin menukar poin anda (minimal 5000 poin)?? (y/t)");
@@ -700,8 +698,7 @@ public class project_bioskop7 {
                                     
                                     hasilPoin = poin(kumpulPoin);
 
-                                    System.out.println("\033[H\033[2J");
-                                    System.out.flush();
+                            System.out.flush();
 
                             // total keseluruhan setelah penukaran poin
                         System.out.println();
