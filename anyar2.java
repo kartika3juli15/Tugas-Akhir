@@ -304,12 +304,6 @@ public class anyar2 {
                     break;
                 }
             }
-            // System.out.println("---------------------------------");
-            // for (int i = 0; i < tersedia.length; i++) {
-            // System.out.print("Seat " + (i + 1) + " : No. " + tersedia[i]);
-            // System.out.println();
-
-            // }
             if (pilihan.equalsIgnoreCase("y")) {
                 System.out.println("=========================================");
                 System.out.println("|| Makanan & Minuman");
