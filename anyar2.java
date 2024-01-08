@@ -320,6 +320,7 @@ public class anyar2 {
             System.out.println("===Terima kasih telah memesan di Bioskop kami!===");
 
             System.out.println("add new");
+            System.out.println("alhamdulillah");
         }
     }
 }
